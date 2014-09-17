@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+        xmlns:s="library://ns.adobe.com/flex/spark" 
+        xmlns:mx="library://ns.adobe.com/flex/mx"
+        overlayControls="true"
+        >
+    <s:navigationContent>
+    </s:navigationContent>
+    <s:titleContent>
+    </s:titleContent>
+    <s:actionContent>
+    </s:actionContent>
+    <cache:ImageGate id="preview" 
+                         assetURL="{data.previewURL}" 
+                         localFolder="preview"
+                         verticalCenter="0" horizontalCenter="0"
+                         width="100%" height="100%" 
+                         scaleMode="letterbox" 
+                         fillMode="scale" 
+                         smooth="true"
+                         />
+    <fx:Declarations>
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            
+            ....
+                
+            protected function start():void
+            {
+                image = new LoaderGate(data.server);//Server setting
+                image.doubleClickEnabled = true;
+                image.addEventListener("cacheAdd", cacheAddHandler);//cacheAdd event
+                image.addEventListener(Event.COMPLETE, loadCompleteHandler);
+                image.addEventListener(ProgressEvent.PROGRESS, img_progressHandler);
+                image.addEventListener(IOErrorEvent.IO_ERROR, img_ioErrorHandler);
+                image.contentLoaderInfo.addEventListener(Event.COMPLETE, loadCompleteHandler);
+                image.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, img_progressHandler);
+                image.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, img_ioErrorHandler);
+                image.addEventListener(MouseEvent.DOUBLE_CLICK, doubleClickHandler);
+                image.addEventListener(MouseEvent.CLICK, clickHandler);
+                image.addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
+                image.addEventListener(TransformGestureEvent.GESTURE_ZOOM, onGesture);
+                image.cache = true; // enable cache
+                image.localFolder = "sample"; //cache folder
+                content.addChild(image);
+            }
+            
+            ....
+        ]]>
+    </fx:Script>
+</s:View>

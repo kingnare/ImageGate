@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+                xmlns:s="library://ns.adobe.com/flex/spark" 
+                xmlns:mx="library://ns.adobe.com/flex/mx" 
+                autoDrawBackground="false"
+                >
+    <fx:Declarations>
+    </fx:Declarations>
+    <s:states>
+        <s:State name="up"/>
+        <s:State name="hovered"/>
+        <s:State name="selected"/>
+        <s:State name="normal"/>
+        <s:State name="over"/>
+    </s:states>
+    
+    <fx:Script>
+        <![CDATA[
+        ]]>
+    </fx:Script>
+    
+    <!-- 图片 -->
+    <cache:BitmapImageGate id="img" 
+                           assetURL="{data}" 
+                           localFolder="preview"
+                           cache="true"
+                           left="0" right="0" top="0" bottom="0" 
+                           scaleMode="{BitmapScaleMode.ZOOM}"
+                           fillMode="scale" 
+                           cacheAdd="img_cacheAddHandler(event)"
+                           smooth="true"/>
+    <s:Label id="detail" horizontalCenter="0" verticalCenter="40" fontSize="16"/>
+</s:ItemRenderer>
